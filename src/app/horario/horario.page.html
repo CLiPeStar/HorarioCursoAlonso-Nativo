@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>horario</ion-title>
+        <ion-buttons slot="start" (click)="vaciarHorario()">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row class="ion-text-center ">
+        <ion-col>{{claseName}}</ion-col>
+        <ion-col>Lunes</ion-col>
+        <ion-col>Martes</ion-col>
+        <ion-col>Miercoles</ion-col>
+        <ion-col>Jueves</ion-col>
+        <ion-col>Viernes</ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let item of this.horarioDia" class="ion-text-center ">
+        <ion-col>{{item.hora}}</ion-col>
+        <ion-col button (click)="this.alertName(item.asignaturaLunes)">{{item.asignaturaLunes.nameShort}}</ion-col>
+        <ion-col button (click)="this.alertName(item.asignaturaMartes)">{{item.asignaturaMartes.nameShort}}</ion-col>
+        <ion-col button
+                 (click)="this.alertName(item.asignaturaMiercoles)">{{item.asignaturaMiercoles.nameShort}}</ion-col>
+        <ion-col button (click)="this.alertName(item.asignaturaJueves)">{{item.asignaturaJueves.nameShort}}</ion-col>
+        <ion-col button (click)="this.alertName(item.asignaturaViernes)">{{item.asignaturaViernes.nameShort}}</ion-col>
+    </ion-row>
+</ion-content>

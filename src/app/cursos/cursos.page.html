@@ -1,0 +1,15 @@
+<ion-header>
+
+    <ion-toolbar>
+        <ion-title>Cursos</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item *ngFor="let item of clases" (click)="pasarClase(item)" button [routerLink]="[ './horario', item._id ]"
+              detail>{{item._name}}
+    </ion-item>
+</ion-content>

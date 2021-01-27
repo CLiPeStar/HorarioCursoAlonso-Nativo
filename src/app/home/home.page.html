@@ -1,0 +1,12 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            Estudios
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-item *ngFor="let item of this.getEstudios()" button [routerLink]="[ './cursos', item.id ]" detail>{{item.name}}
+    </ion-item>
+</ion-content>
