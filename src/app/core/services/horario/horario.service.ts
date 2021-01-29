@@ -75,16 +75,14 @@ export class HorarioService {
     }
 
     rellenarLista() {
-        console.log(this._horarioSemana);
-        console.log('rellenandoLista' + this._horas.length);
-        let horarios: Array<Horario> = [];
+        const horarios: Array<Horario> = [];
         let horarioDias: Horario;
         for (let i = 0; i < this._horas.length; i++) {
-            let lunes = this._horarioSemana.get(this._dias[0]).get(this._horas[i]);
-            let martes = this._horarioSemana.get(this._dias[1]).get(this._horas[i]);
-            let miercoles = this._horarioSemana.get(this._dias[2]).get(this._horas[i]);
-            let jueves = this._horarioSemana.get(this._dias[3]).get(this._horas[i]);
-            let viernes = this._horarioSemana.get(this._dias[4]).get(this._horas[i]);
+            const lunes = this._horarioSemana.get(this._dias[0]).get(this._horas[i]);
+            const martes = this._horarioSemana.get(this._dias[1]).get(this._horas[i]);
+            const miercoles = this._horarioSemana.get(this._dias[2]).get(this._horas[i]);
+            const jueves = this._horarioSemana.get(this._dias[3]).get(this._horas[i]);
+            const viernes = this._horarioSemana.get(this._dias[4]).get(this._horas[i]);
 
             horarioDias = new Horario(this._horas[i], lunes, martes, miercoles, jueves, viernes);
             horarios.push(horarioDias);

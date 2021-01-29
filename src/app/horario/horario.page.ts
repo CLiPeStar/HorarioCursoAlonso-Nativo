@@ -4,7 +4,7 @@ import {ActivatedRoute, Route, Router} from '@angular/router';
 import {Clases} from '../core/Clases';
 import {Horario} from '../core/services/horario';
 import {Asignatura} from '../core/asignatura';
-import {CopiaService} from "../core/services/BBDD/copia.service";
+import {CopiaService} from '../core/services/BBDD/copia.service';
 
 @Component({
     selector: 'app-horario',
@@ -22,9 +22,9 @@ export class HorarioPage implements OnInit {
             this._claseName = this._clase.name;
             this._horario.rellenarHorario(this._claseName)
                 .then(() => {
-                    this._horario.rellenarLista()
+                    this._horario.rellenarLista();
                     this._horarioDia = this._horario.horarioDia;
-                })
+                });
         });
 
     }
@@ -46,6 +46,6 @@ export class HorarioPage implements OnInit {
     }
 
     alertName(asignatura: Asignatura) {
-        alert(asignatura.nameShort + " - " + asignatura.nameLong)
+        alert(asignatura.nameShort + ' - ' + asignatura.nameLong);
     }
 }
