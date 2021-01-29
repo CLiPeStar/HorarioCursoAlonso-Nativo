@@ -16,14 +16,16 @@ export class CopiaService {
                     this.sqlDbCopy
                         .copy('Horario16e.db', 0)
                         .then(() => {
-                            alert("BD copiada con exito")
+                            alert('BD copiada con exito');
                             resolve('BD copiada con exito');
                         })
                         .catch((error) => {
+
                             reject('Error al copiar BD');
                         });
                 })
-                .catch(() => {
+                .catch((e) => {
+                    alert(e);
                     reject('La plataforma no está lista para copiar');
                 });
 

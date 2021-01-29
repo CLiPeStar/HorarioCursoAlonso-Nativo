@@ -13,8 +13,11 @@ import {ClasesService} from './core/services/clases/clases.service';
 import {HorarioService} from './core/services/horario/horario.service';
 import {DatosService} from './core/services/BBDD/datos.service';
 import {CopiaService} from './core/services/BBDD/copia.service';
-import {SQLite} from '@ionic-native/sqlite/ngx';
+import {SQLite, SQLiteObject} from '@ionic-native/sqlite/ngx';
 import {SqliteDbCopy} from '@ionic-native/sqlite-db-copy/ngx';
+import {PlatformMock} from '../../Mocks/Platform/index';
+import {SqliteDbCopyMock} from '../../Mocks/DbCopy';
+import {SQLiteMock, SqliteObjectMock} from '../../Mocks/Sqlite';
 
 @NgModule({
     declarations: [AppComponent],
@@ -26,7 +29,10 @@ import {SqliteDbCopy} from '@ionic-native/sqlite-db-copy/ngx';
         CopiaService,
         EstudiosService, ClasesService, HorarioService, DatosService,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
-        SqliteDbCopy, SQLite
+        {provide: Platform, useClass: PlatformMock},
+        {provide: SqliteDbCopy, useClass: SqliteDbCopyMock},
+        {provide: SQLite, useClass: SQLiteMock},
+        {provide: SQLiteObject, useClass: SqliteObjectMock},
     ],
     bootstrap: [AppComponent]
 })

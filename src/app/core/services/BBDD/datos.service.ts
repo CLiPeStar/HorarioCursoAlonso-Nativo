@@ -3,7 +3,7 @@ import {SQLite, SQLiteObject} from '@ionic-native/sqlite/ngx';
 import {Platform} from '@ionic/angular';
 import {Injectable} from '@angular/core';
 import {Request} from '../../Request';
-import {CopiaService} from "./copia.service";
+import {CopiaService} from './copia.service';
 
 @Injectable({
     providedIn: 'root',
@@ -11,8 +11,9 @@ import {CopiaService} from "./copia.service";
 export class DatosService {
     private db: SQLiteObject;
 
-    constructor(private platform: Platform, private sqlite: SQLite, private copia: CopiaService) {
+    constructor(private platform: Platform, private sqlite: SQLite, private copia: CopiaService, private dbs: SQLiteObject) {
         copia.copiarBBDD();
+        this.db = this.dbs;
     }
 
     requestExecuteSentence() {
@@ -50,6 +51,7 @@ export class DatosService {
                                     const obj = data.rows.item(i);
                                     responseData.push(obj);
                                 }
+
                                 resolve(responseData);
 
                             })
@@ -71,7 +73,10 @@ export class DatosService {
 
         return new Promise<Array<any>>((resolve, reject) => {
             this.executeSentence(request)
-                .then((data) => resolve(data))
+                .then((data) => {
+                    console.log(data);
+                    resolve(data);
+                })
                 .catch((e) => reject(e));
         });
     }
